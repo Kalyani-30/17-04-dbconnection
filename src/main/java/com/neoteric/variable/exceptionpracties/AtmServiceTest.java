@@ -25,5 +25,19 @@ public class AtmServiceTest {
         } else {
             System.out.println("Error: " + amountApiResponse.getMessage());
         }
+        try {
+            DbAccountRepository repo = new DbAccountRepository();
+            CardDetails cardDetails = repo.getCardDetailsByCardNumber("111111");
+
+            if (cardDetails != null) {
+                System.out.println("Card Found: " + cardDetails.getCardNumber());
+                System.out.println("Account Number: " + cardDetails.getAccount().getAccountNumber());
+                System.out.println("Balance: " + cardDetails.getAccount().getBalance());
+            } else {
+                System.out.println("Card not found");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
