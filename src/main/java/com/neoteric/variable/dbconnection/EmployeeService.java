@@ -7,6 +7,7 @@ public class EmployeeService {
     private Connection connection;
 
     public EmployeeService() {
+
         this.connection = DatabaseConnection.getConnection();
     }
 
